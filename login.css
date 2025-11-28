@@ -1,0 +1,187 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background Video */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.4) blur(3px);
+}
+
+/* Center container */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Loader overlay */
+#loader-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.04);
+  padding: 18px 22px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+.keyboard {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  font-size: 28px;
+  color: #ff7a2d;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  transform-origin: center;
+  animation: keyboard-spin 900ms linear infinite;
+}
+.loader-text { color: #fff; font-weight: 600; }
+
+@keyframes keyboard-spin { to { transform: rotate(360deg); } }
+
+/* Page loader overlay for auth page (shares styles with site) */
+#page-loader { position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; background: #0b0b0b; color:#fff; z-index:99999; transition: opacity 420ms ease; }
+#page-loader.hide { opacity:0; pointer-events:none; }
+#page-loader .page-loader-inner { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.page-spinner { width:56px; height:56px; border-radius:10px; display:inline-block; background:linear-gradient(135deg,#ff7a2d,#ffb38a); box-shadow:0 8px 30px rgba(255,122,45,0.12); transform-origin:center; animation: loader-rotate 900ms linear infinite; }
+.page-loader-text { color:#fff; font-weight:700; }
+@keyframes loader-rotate { to { transform: rotate(360deg); } }
+
+/* Glassmorphism card */
+.container {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 40px;
+  width: 350px;
+  box-shadow: 0 0 25px rgba(255, 122, 45, 0.4);
+  animation: pop 0.6s ease;
+}
+
+/* Make login card responsive on small screens */
+@media (max-width: 480px) {
+  .container { width: calc(100% - 40px); padding: 26px; }
+  input { font-size: 0.95rem; }
+  button { font-size: 0.95rem; }
+}
+
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/******** Forms ********/
+
+form {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form.active {
+  display: flex;
+}
+
+/* Fade in animation */
+.fade-in {
+  animation: fade 0.6s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide up animation */
+.slide-up {
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  color: #ff7a2d;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff7a2d;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ff9351;
+  box-shadow: 0 0 15px #ff7a2d;
+}
+
+.switch {
+  color: #ddd;
+  font-size: 0.85rem;
+}
+
+.switch span {
+  color: #ff7a2d;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.switch span:hover {
+  color: #ff9351;
+}
+
+/* inline auth message */
+.auth-message {
+  margin-top: 12px;
+  text-align: center;
+  color: #dff6e3;
+  background: rgba(0,0,0,0.2);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: none;
+}
+.auth-message.show { display: block; }

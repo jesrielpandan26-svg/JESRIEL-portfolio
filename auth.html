@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In / Sign Up</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+
+  <!-- Background anime video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="jjtsu.mp4" type="video/mp4">
+  </video>
+
+  <div class="container">
+    <div class="forms-container">
+
+      <!-- Sign In -->
+      <form id="sign-in-form" class="form active">
+        <h2>Sign In</h2>
+        <input type="email" placeholder="Email" id="signin-email" required>
+        <input type="password" placeholder="Password" id="signin-password" required>
+        <button type="submit">Sign In</button>
+        <p class="switch">Don't have an account? <span id="show-signup">Sign Up</span></p>
+      </form>
+
+      <!-- Sign Up -->
+      <form id="sign-up-form" class="form">
+        <h2>Sign Up</h2>
+        <input type="text" placeholder="Full Name" id="signup-name" required>
+        <input type="email" placeholder="Email" id="signup-email" required>
+        <input type="password" placeholder="Password" id="signup-password" required>
+        <button type="submit">Sign Up</button>
+        <p class="switch">Already have an account? <span id="show-signin">Sign In</span></p>
+      </form>
+
+    </div>
+      <!-- Inline message area for non-blocking feedback -->
+      <div id="auth-message" class="auth-message" aria-live="polite" role="status" hidden></div>
+  </div>
+
+    <!-- Loader overlay shown during sign-in (keyboard spinner) -->
+    <div id="loader-overlay" aria-hidden="true" style="display:none">
+      <div class="loader" aria-hidden="false">
+        <div class="keyboard" aria-hidden="true">⌨</div>
+        <div class="loader-text">Signing in...</div>
+      </div>
+    </div>
+
+  <script src="auth.js"></script>
+  <!-- Page loader overlay -->
+  <div id="page-loader">
+    <div class="page-loader-inner">
+      <div class="page-spinner"></div>
+      <div class="page-loader-text">Loading...</div>
+    </div>
+  </div>
+
+</body>
+
+<!-- Background anime video -->
